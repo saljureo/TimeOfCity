@@ -3,9 +3,7 @@ from tkinter import *
 from tkinter import Tk
 from tkinter import ttk
 
-def ponerTexto():
-    ttk.Label(frm, text = "Hola").grid(column=0, row=2)
-    print("ponerTexto runned sucessfully. texto = " + texto)
+
 
 def program():
     ciudad = "Barcelona"
@@ -32,7 +30,9 @@ def program():
     respuesta = requests.get(requerimiento)
     #print(respuesta.json())
     #print("\n")
-    print("En " + timeZone + " son las " + str(respuesta.json()['hour']) + ":" + str(respuesta.json()['minute']))
+    respuestaFinal = "En " + timeZone + " son las " + str(respuesta.json()['hour']) + ":" + str(respuesta.json()['minute'])
+    print(respuestaFinal)
+    ttk.Label(frm, text = respuestaFinal).grid(column=0, row=2)
 
 
 root = Tk()
@@ -41,6 +41,6 @@ frm.grid()
 ttk.Label(frm, text="Enter a city and find out its time: ").grid(column=0, row=0)
 ttk.Entry(frm).grid(column=1, row=0)
 #ttk.Button(frm, text="Search", command=root.destroy).grid(column=0, row=1)
-ttk.Button(frm, text="Search", command=ponerTexto).grid(column=0, row=1)
+ttk.Button(frm, text="Search", command=program).grid(column=0, row=1)
 ttk.Label(frm).grid(column=0, row=2)
 root.mainloop()
